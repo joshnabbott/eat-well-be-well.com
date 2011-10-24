@@ -1,32 +1,73 @@
 @import "compass";
 
-$link-color:         #0388a6;
-$link-hover-color:   #009ce0;
+$link-color:         #353535;
+$link-hover-color:   #444;
 $link-focus-color:   false;
 $link-active-color:  false;
 $link-visited-color: false;
 
-$font-color:  #2a2a2a;
-$font-family: sans-serif;
-$base-font-size:   12px;
-$base-line-height: 18px;
-
-$total-cols: 12;
-$col-width: 4em;
-$gutter-width: 1em;
-$side-gutter-width: $gutter-width;
+$font-color:  #fff;
+$font-family: 'Trebuchet MS', sans-serif;
+$base-font-size:   36px;
+$base-line-height: 150%;
 
 @include global-reset;
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: $font-family;
-  color: $font-color; 
+  color: $font-color;
+  font-size: $base-font-size;
 }
 
 a {
   @include link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color);
 }
 
-#main {
-  padding: 50px;
+.loading {
+  background: url('/images/spinner.gif') 50% 50% no-repeat;
+}
+div.page {
+  height: 100%;
+
+  img {
+    display: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .content {
+    padding-top: 25%;
+    margin: 0 auto;
+    text-align: center;
+    width: 65%;
+
+    p {
+      margin-bottom: 15px;
+
+      span {
+        background: rgba(0, 0, 0, 0.5);
+        line-height: 150%;
+        padding: 10px;
+        text-shadow: 1px 2px #333
+      }
+    }
+  }
+}
+
+#page-one {
+}
+
+#page-two {
+}
+
+#page-three {
+}
+
+#page-four {
 }

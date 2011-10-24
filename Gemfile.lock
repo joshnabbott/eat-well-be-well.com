@@ -103,3 +103,4 @@ PLATFORMS
 
 DEPENDENCIES
   middleman (~> 2.0.12)
+  sprockets
