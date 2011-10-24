@@ -2,10 +2,21 @@
 #= require "waypoints"
 
 (function($){
-  $('.page').waypoint({ offset: '50%' });
+  // Set waypoints
+  $('.page').waypoint(function(event, direction) {
+    var $currentPage = $(this);
+
+    if(direction === 'up') {
+      $currentPage = $currentPage.prev();
+    }
+    document.location.hash = '/' + $currentPage.attr('data-slug');
+  }, {
+    // offset: '50%'
+  });
 
   $('.page > .content').hide();
 
+  // How the site loads
   $('.page').each(function () {
     var $page = $(this)
     var $image = $('<img src="' + $page.attr('data-background-image') +'" alt="Change this alt description" />');
