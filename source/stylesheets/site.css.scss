@@ -1,4 +1,6 @@
 @import "compass";
+@import "compass/css3/font-face";
+@include font-face("Quicksand Light", font-files("/fonts/quicksand/Quicksand_Light.otf", opentype));
 
 $link-color:         #353535;
 $link-hover-color:   #444;
@@ -7,7 +9,7 @@ $link-active-color:  false;
 $link-visited-color: false;
 
 $font-color:  #fff;
-$font-family: 'Trebuchet MS', sans-serif;
+$font-family: 'Quicksand Light';
 $base-font-size:   36px;
 $base-line-height: 150%;
 
