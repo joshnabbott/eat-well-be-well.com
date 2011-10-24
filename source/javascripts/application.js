@@ -1,7 +1,15 @@
 #= require "jquery"
 #= require "waypoints"
+#= require "jquery.scrollto"
 
 (function($){
+  // navigation
+  $('ul > li > a').click(function(e) {
+    e.preventDefault();
+    handleHash($(this).attr('href'));
+    // $('body').scrollTo("#" + $(this).attr('href'), 250);
+  });
+
   // Set waypoints
   $('.page').waypoint(function(event, direction) {
     var $currentPage = $(this);
@@ -10,6 +18,7 @@
       $currentPage = $currentPage.prev();
     }
     document.location.hash = '/' + $currentPage.attr('data-slug');
+    // $currentPage.css({'position': 'fixed'})
   }, {
     // offset: '50%'
   });
@@ -34,3 +43,7 @@
   });
 })(jQuery);
 
+function handleHash(hashTag) {
+  var hashTag = hashTag.split('#')[1];
+  $('body').scrollTo('#' + hashTag, 300);
+}
