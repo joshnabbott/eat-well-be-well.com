@@ -2,8 +2,8 @@
 @import "compass/css3/font-face";
 @include font-face("Quicksand Light", font-files("/fonts/quicksand/Quicksand_Light.otf", opentype));
 
-$link-color:         #353535;
-$link-hover-color:   #444;
+$link-color:         red;
+$link-hover-color:   #cacaca;
 $link-focus-color:   false;
 $link-active-color:  false;
 $link-visited-color: false;
@@ -30,11 +30,11 @@ a {
 }
 
 .loading {
+  display: block !important;
   background: url('/images/spinner.gif') 50% 50% no-repeat;
 }
 
 ul {
-  /* float: right; */
   position: fixed;
   top: 20px;
   right: 75px;
@@ -42,6 +42,20 @@ ul {
   li {
     float: left;
     margin-right: 20px;
+
+    a {
+      background: rgba(0, 0, 0, 0.5);
+      display: block;
+      height: 15px;
+      text-indent: -9999px;
+      width: 15px;
+    }
+
+    a.current {
+      border: 1px solid #fff;
+      height: 13px;
+      width: 13px;
+    }
   }
 }
 
@@ -49,15 +63,22 @@ div.page {
   display: table;
   height: 100%;
 
-  img {
+  .background-image {
     display: none;
     height: 100%;
     position: absolute;
     width: 100%;
     z-index: -1;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   .content {
+    /* display: block; */
+    /* position: absolute; */
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -88,3 +109,4 @@ div.page {
 
 #page-four {
 }
+
