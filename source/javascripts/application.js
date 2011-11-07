@@ -3,6 +3,9 @@
 #= require "jquery.scrollto"
 #= require "shifty"
 
+var initialized = false;
+var currentPage;
+
 $(function() {
   var pages = new Array();
 
@@ -14,8 +17,6 @@ $(function() {
     page = new Page(index, $page, $link, pages);
     pages.push(page);
 
-    $('.page > .content').hide();
-
     // Load images
     var $image = $('<div class="background-image"><img src="' + $page.attr('data-background-image') +'" alt="Change this alt description" /></div>');
 
@@ -25,7 +26,8 @@ $(function() {
     setTimeout(function() {
       $page.removeClass('loading');
       $image.fadeIn('slow', function() {
-        $('.page > .content').fadeIn();
+        initialized = true;
+        currentPage.showContent();
       });
     }, 1000);
   });
@@ -72,14 +74,18 @@ Page.prototype = {
     this.$target.waypoint(function(event, direction) {
       if(direction === 'up') {
         currentPage = self.prev();
+        self.hideContent();
       } else {
         currentPage = self;
+        self.prev().hideContent();
       }
       $("ul > li > a").removeClass('current');
+      currentPage.showContent();
       currentPage.link.makeCurrent();
       currentPage.trackPageView();
     }, {
-      offset: '50%'
+      offset: '50%',
+      onlyOnScroll: true
     });
   },
   prev: function() {
@@ -90,7 +96,24 @@ Page.prototype = {
   },
   trackPageView: function() {
     console.log("Analytics tracking goes here");
+  },
+  showContent: function() {
+    if(initialized) {
+      this.$target.find('p').each(function(index, el) {
+        setTimeout(function() {
+          $(el).addClass('visible');
+        }, 250 * index);
+      });
+    }
+  },
+  hideContent: function() {
+    this.$target.find('p').each(function(index, el) {
+      setTimeout(function() {
+        $(el).removeClass('visible');
+      }, 250 * index);
+    })
   }
+
 }
 
 var NavLink = function(page, element) {
