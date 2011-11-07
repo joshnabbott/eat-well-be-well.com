@@ -1,12 +1,9 @@
 #= require "jquery"
 #= require "waypoints"
 #= require "jquery.scrollto"
-// #= require "shifty"
+#= require "shifty"
 
 $(function() {
-  // var myTweenable    = new Tweenable();
-  // window.myTweenable = myTweenable;
-
   var pages = new Array();
 
   $('.page').each(function(index, page) {
@@ -32,24 +29,6 @@ $(function() {
       });
     }, 1000);
   });
-
-  // $(window).scroll(function() {
-  //   myTweenable.tween({
-  //     from: {
-  //       'left': '200%',
-  //       'opacity': '1'
-  //     },
-  //     to: {
-  //       'left': '0%',
-  //       'opacity': '1'
-  //     },
-  //     'duration': 1000,
-  //     'step': function () {
-  //       $('#page-one > .content').css({'opacity': this.opacity, 'left': this.left});
-  //     },
-  //     'easing': 'linear'
-  //   });
-  // })
 });
 
 String.prototype.humanize = function() {
@@ -89,6 +68,7 @@ Page.prototype = {
   initialize: function() {
     var self = this;
 
+    // Set a waypoint for page changes
     this.$target.waypoint(function(event, direction) {
       if(direction === 'up') {
         currentPage = self.prev();
@@ -104,6 +84,9 @@ Page.prototype = {
   },
   prev: function() {
     return this.collection[this.id - 1];
+  },
+  next: function() {
+    return this.collection[this.id + 1];
   },
   trackPageView: function() {
     console.log("Analytics tracking goes here");
@@ -140,7 +123,7 @@ NavLink.prototype = {
     document.location.hash = ['/', this.sectionHref].join('');
   },
   setTitle: function() {
-    document.title = 'Eet well, Be well - ' + this.sectionName;
+    document.title = 'Eat well, Be well - ' + this.sectionName;
   },
   setSectionHref: function() {
     this.sectionHref = this.$target.attr('href').replace(/#/g, '');

@@ -46,15 +46,17 @@ ul {
     a {
       background: rgba(0, 0, 0, 0.5);
       display: block;
-      height: 15px;
+      height: 16px;
       text-indent: -9999px;
-      width: 15px;
+      width: 16px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px;
     }
 
     a.current {
-      border: 1px solid #fff;
-      height: 13px;
-      width: 13px;
+      background: rgba(255, 255, 255, 1);
+      height: 16px;
+      width: 16px;
     }
   }
 }
@@ -77,8 +79,6 @@ div.page {
   }
 
   .content {
-    /* display: block; */
-    /* position: absolute; */
     display: table-cell;
     text-align: center;
     vertical-align: middle;
