@@ -48,13 +48,15 @@
 
     <div class="page" id="page-four" data-background-image="/images/background-images/tomato.jpg">
       <div class="content">
-        <p><span>A site dedicated to promoting wellness through how you eat.</span></p>
-        <p><span>Important things lie ahead</span></p>
-        <p><span>Page four</span></p>
+        <form>
+          <p><span>Give us your name and email address:</span></p>
+          <p><span><label>Name: <input type="text" name="name" /></label></span></p>
+          <p><span><label>Email: <input type="text" name="email" /></label></span></p>
+        </form>
       </div>
     </div>
 
-    <%= javascript_include_tag :application %>
+    <%= javascript_include_tag :main %>
   </body>
 </html>
 
