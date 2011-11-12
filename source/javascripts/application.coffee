@@ -1,56 +1,24 @@
 $ ->
-  window.initialized = false
-  window.currentPage
-  window.pages = []
+  initialDelay = 2000 # milliseconds to wait before fading in background images
 
-  # window.stage = new Stage()
+  window.stage = new Stage()
 
   $('.page').each (index, page) ->
-    $page = $(page)
-    $link = $("ul > li:eq(#{index}) > a")
+    link = $("ul > li:eq(#{index}) > a")
+    window.stage.pages.push(new Page(index, $(page), $(link), window.stage))
 
-    page = new Page(index, $page, $link, window.pages)
-    window.pages.push(page)
+    # animate the loading of elements.
+    # should this be a method of Stage?
+    $(page).find('.content').addClass 'loading'
 
-    $image = $("<div class=\"background-image\"><img src=\"#{$page.attr('data-background-image')}\" alt=\"Change this alt description\" /></div>")
+  setTimeout ->
+    for page in window.stage.pages
+      page.target.find('.content').removeClass 'loading'
+      page.loadBackgroundImage()
 
-    $page.addClass('loading')
-    $page.prepend($image)
-
-    setTimeout ->
-      $page.removeClass 'loading'
-      $image.fadeIn 'slow', ->
-        window.initialized = true
-        window.currentPage.showContent()
-    , 2000
-
-# window.Stage = class Stage
-#   constructor: ->
-#     @currentPage
-#     @initialized = false
-#     @pages = []
-
-#     @setStageDimensions()
-#     @setupPages()
-
-#     $(window).bind 'resize', =>
-#       @setStageDimensions()
-
-#   setupPages: ->
-#     self = @
-
-#     $('.page').each (index, page) ->
-#       link = $("ul > li:eq(#{index}) > a")
-#       page = new Page(index, $(page), link)
-#       page.target.addClass 'loading'
-#       setTimeout ->
-#         page.target.removeClass 'loading'
-#         page.loadBackgroundImage()
-#       , 2000
-
-#       self.pages.push(new Page(index, $(page), link))
-
-#   setStageDimensions: ->
-#     @height = $(window).height()
-#     @width = $(window).width()
+      setTimeout ->
+        window.stage.initialized = true
+        window.stage.currentPage.showContent()
+      , initialDelay / 2
+  , initialDelay
 

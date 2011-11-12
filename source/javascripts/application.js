@@ -1,24 +1,28 @@
 (function() {
   $(function() {
-    window.initialized = false;
-    window.currentPage;
-    window.pages = [];
-    return $('.page').each(function(index, page) {
-      var $image, $link, $page;
-      $page = $(page);
-      $link = $("ul > li:eq(" + index + ") > a");
-      page = new Page(index, $page, $link, window.pages);
-      window.pages.push(page);
-      $image = $("<div class=\"background-image\"><img src=\"" + ($page.attr('data-background-image')) + "\" alt=\"Change this alt description\" /></div>");
-      $page.addClass('loading');
-      $page.prepend($image);
-      return setTimeout(function() {
-        $page.removeClass('loading');
-        return $image.fadeIn('slow', function() {
-          window.initialized = true;
-          return window.currentPage.showContent();
-        });
-      }, 2000);
+    var initialDelay;
+    initialDelay = 2000;
+    window.stage = new Stage();
+    $('.page').each(function(index, page) {
+      var link;
+      link = $("ul > li:eq(" + index + ") > a");
+      window.stage.pages.push(new Page(index, $(page), $(link), window.stage));
+      return $(page).find('.content').addClass('loading');
     });
+    return setTimeout(function() {
+      var page, _i, _len, _ref, _results;
+      _ref = window.stage.pages;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        page = _ref[_i];
+        page.target.find('.content').removeClass('loading');
+        page.loadBackgroundImage();
+        _results.push(setTimeout(function() {
+          window.stage.initialized = true;
+          return window.stage.currentPage.showContent();
+        }, initialDelay / 2));
+      }
+      return _results;
+    }, initialDelay);
   });
 }).call(this);

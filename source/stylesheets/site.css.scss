@@ -30,7 +30,6 @@ a {
 }
 
 .loading {
-  display: block !important;
   background: url('/images/spinner.gif') 50% 50% no-repeat;
 }
 
@@ -64,6 +63,7 @@ ul {
 div.page {
   display: table;
   height: 100%;
+  width: 100%;
 
   .background-image {
     display: none;

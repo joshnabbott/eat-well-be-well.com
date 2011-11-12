@@ -1,7 +1,6 @@
 window.Page = class Page
-  constructor: (@id, @target, link, @collection) ->
+  constructor: (@id, @target, link, @stage) ->
     @link = new NavLink(@, link)
-    @backgroundLoaded = false
     @initialize()
 
   initialize: ->
@@ -13,30 +12,30 @@ window.Page = class Page
       else
         currentPage = self
 
-      window.currentPage = currentPage
+      self.stage.currentPage = currentPage
 
       $('ul > li > a').removeClass 'current'
       currentPage.showContent()
       currentPage.link.makeCurrent()
       currentPage.trackPageView()
-      false
     ),
       offset: '50%'
       onlyOnScrol: true
 
   loadBackgroundImage: ->
+    self = @
     $image = $("<div class=\"background-image\"><img src=\"#{@target.attr('data-background-image')}\" alt=\"Change this alt description\" /></div>")
     @target.prepend $image
     $image.fadeIn 'slow'
 
-  prev: -> @collection[@id - 1]
+  prev: -> @stage.pages[@id - 1]
 
-  next: -> @collection[@id + 1]
+  next: -> @stage.pages[@id + 1]
 
   trackPageView: -> console.log "Analytics tracking goes here"
 
   showContent: ->
-    if window.initialized
+    if window.stage.initialized
       @target.find('p').each (index, element) ->
         setTimeout ->
           $(element).addClass 'visible'
