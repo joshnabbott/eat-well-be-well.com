@@ -6,6 +6,8 @@ window.Page = class Page
   initialize: ->
     self = @
 
+    @setElementVisibility()
+
     @target.waypoint ((event, direction) ->
       if direction == 'up'
         currentPage = self.prev()
@@ -34,16 +36,22 @@ window.Page = class Page
 
   trackPageView: -> console.log "Analytics tracking goes here"
 
+  setElementVisibility: ->
+    @target.find('[data-invisible]').each ->
+      $(this).addClass 'invisible'
+
   showContent: ->
-    if window.stage.initialized
-      @target.find('p').each (index, element) ->
+    if @stage.initialized
+      @target.find('.invisible').each (index, element) ->
         setTimeout ->
+          $(element).removeClass 'invisible'
           $(element).addClass 'visible'
         , 250 * index
 
   hideContent: ->
-    @target.find('p').each (index, element) ->
+    @target.find('.invisible').each (index, element) ->
       setTimeout ->
         $(element).removeClass 'visible'
+        $(element).addClass 'invisible'
       , 250 * index
 

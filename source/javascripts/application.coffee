@@ -8,7 +8,6 @@ $ ->
     window.stage.pages.push(new Page(index, $(page), $(link), window.stage))
 
     # animate the loading of elements.
-    # should this be a method of Stage?
     $(page).find('.content').addClass 'loading'
 
   setTimeout ->

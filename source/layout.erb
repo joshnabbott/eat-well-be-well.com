@@ -23,35 +23,43 @@
 
     <div class="page" id="page-one" data-background-image="images/background-images/kale.jpg">
       <div class="content">
-        <p><span>The night has a thousand eyes</span></p>
-        <p><span>And the day but one</span></p>
-        <p><span>Yet the light of the bright world dies</span></p>
-        <p><span>With the dying sun.</span></p>
+        <p data-invisible><span>The night has a thousand eyes</span></p>
+        <p data-invisible><span>And the day but one</span></p>
+        <p data-invisible><span>Yet the light of the bright world dies</span></p>
+        <p data-invisible><span>With the dying sun.</span></p>
       </div>
     </div>
 
     <div class="page" id="page-two" data-background-image="/images/background-images/cranberries.jpg">
       <div class="content">
-        <p><span>A site dedicated to promoting wellness through how you eat.</span></p>
-        <p><span>Important things lie ahead</span></p>
-        <p><span>Page two</span></p>
+        <p data-invisible><span>A site dedicated to promoting wellness through how you eat.</span></p>
+        <p data-invisible><span>Important things lie ahead</span></p>
+        <p data-invisible><span>Page two</span></p>
       </div>
     </div>
 
     <div class="page" id="page-three" data-background-image="/images/background-images/pomegranate.jpg">
       <div class="content">
-        <p><span>A site dedicated to promoting wellness through how you eat.</span></p>
-        <p><span>Important things lie ahead</span></p>
-        <p><span>Page three</span></p>
+        <p data-invisible><span>A site dedicated to promoting wellness through how you eat.</span></p>
+        <p data-invisible><span>Important things lie ahead</span></p>
+        <p data-invisible><span>Page three</span></p>
       </div>
     </div>
 
     <div class="page" id="page-four" data-background-image="/images/background-images/tomato.jpg">
       <div class="content">
-        <form>
-          <p><span>Give us your name and email address:</span></p>
-          <p><span><label>Name: <input type="text" name="name" /></label></span></p>
-          <p><span><label>Email: <input type="text" name="email" /></label></span></p>
+        <form method="post" action="" id="contact-form" data-invisible>
+          <h3>Curious to find out more? Please get in touch!</h3>
+
+          <fieldset>
+            <p data-invisible>
+              <label for="contact-name">Name:</label><input type="text" name="contact[name]" id="contact-name" />
+            </p>
+
+            <p data-invisible>
+              <label for="contact-email">Email:</label><input type="text" name="contact[email]" id="contact-email" />
+            </p>
+          </fieldset>
         </form>
       </div>
     </div>

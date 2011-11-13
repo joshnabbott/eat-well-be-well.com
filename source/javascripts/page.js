@@ -11,6 +11,7 @@
     Page.prototype.initialize = function() {
       var self;
       self = this;
+      this.setElementVisibility();
       return this.target.waypoint((function(event, direction) {
         var currentPage;
         if (direction === 'up') {
@@ -44,19 +45,26 @@
     Page.prototype.trackPageView = function() {
       return console.log("Analytics tracking goes here");
     };
+    Page.prototype.setElementVisibility = function() {
+      return this.target.find('[data-invisible]').each(function() {
+        return $(this).addClass('invisible');
+      });
+    };
     Page.prototype.showContent = function() {
-      if (window.stage.initialized) {
-        return this.target.find('p').each(function(index, element) {
+      if (this.stage.initialized) {
+        return this.target.find('.invisible').each(function(index, element) {
           return setTimeout(function() {
+            $(element).removeClass('invisible');
             return $(element).addClass('visible');
           }, 250 * index);
         });
       }
     };
     Page.prototype.hideContent = function() {
-      return this.target.find('p').each(function(index, element) {
+      return this.target.find('.invisible').each(function(index, element) {
         return setTimeout(function() {
-          return $(element).removeClass('visible');
+          $(element).removeClass('visible');
+          return $(element).addClass('invisible');
         }, 250 * index);
       });
     };
