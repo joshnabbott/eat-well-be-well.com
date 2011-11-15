@@ -27,8 +27,12 @@ window.Page = class Page
   loadBackgroundImage: ->
     self = @
     $image = $("<div class=\"background-image\"><img src=\"#{@target.attr('data-background-image')}\" alt=\"Change this alt description\" /></div>")
+    @setBgDimensions()
     @target.prepend $image
     $image.fadeIn 'slow'
+
+  setBgDimensions: ->
+    $('.background-image > img').css({ 'height': @stage.height, 'width': @stage.width })
 
   prev: -> @stage.pages[@id - 1]
 

@@ -33,8 +33,15 @@
       var $image, self;
       self = this;
       $image = $("<div class=\"background-image\"><img src=\"" + (this.target.attr('data-background-image')) + "\" alt=\"Change this alt description\" /></div>");
+      this.setBgDimensions();
       this.target.prepend($image);
       return $image.fadeIn('slow');
+    };
+    Page.prototype.setBgDimensions = function() {
+      return $('.background-image > img').css({
+        'height': this.stage.height,
+        'width': this.stage.width
+      });
     };
     Page.prototype.prev = function() {
       return this.stage.pages[this.id - 1];
