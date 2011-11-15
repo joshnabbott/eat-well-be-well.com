@@ -8,7 +8,15 @@
       this.pages = [];
       this.setStageDimensions();
       $(window).bind('resize', __bind(function() {
-        return this.setStageDimensions();
+        var page, _i, _len, _ref, _results;
+        this.setStageDimensions();
+        _ref = this.pages;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          page = _ref[_i];
+          _results.push(page.setBgDimensions());
+        }
+        return _results;
       }, this));
     }
     Stage.prototype.setStageDimensions = function() {

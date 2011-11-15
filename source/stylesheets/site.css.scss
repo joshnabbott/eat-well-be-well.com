@@ -29,6 +29,7 @@ body {
   font-family: $font-family;
   color: $font-color;
   font-size: $base-font-size;
+  overflow: hidden;
 }
 
 a {
@@ -74,9 +75,9 @@ div.page {
 
   .background-image {
     display: none;
-    height: 100%;
+    /* height: 100%; */
     position: absolute;
-    width: 100%;
+    /* width: 100%; */
     z-index: -1;
 
     img {
@@ -124,6 +125,22 @@ div.page {
   }
 }
 
+body.grab {
+  cursor: hand;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: url('/images/css/openhand.cur'), default !important;
+}
+
+body.grabbing {
+  cursor: grabbing;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: url('/images/css/closedhand.cur'), default !important;
+}
+
 #page-one {
 }
 
@@ -139,7 +156,7 @@ div.page {
     line-height: 150%;
     margin: 0 auto 25px auto;
     overflow: auto;
-    padding: 50px 0;
+    padding: 25px 0;
     text-shadow: 1px 2px #000;
     width: 70%;
 
