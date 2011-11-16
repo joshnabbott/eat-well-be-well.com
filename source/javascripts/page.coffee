@@ -15,13 +15,14 @@ window.Page = class Page
         currentPage = self
 
       self.stage.currentPage = currentPage
+      $(document.body).trigger 'mouseup' if self.stage.grabbing
 
       $('ul > li > a').removeClass 'current'
       currentPage.showContent()
       currentPage.link.makeCurrent()
       currentPage.trackPageView()
     ),
-      offset: '50%'
+      offset: '75%'
       onlyOnScrol: true
 
   loadBackgroundImage: ->

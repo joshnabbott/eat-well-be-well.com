@@ -5,6 +5,7 @@ window.Stage = class Stage
     @grabbing = false
     @gesturesY = 0
     @scrollStartPosition = 0
+    @t
     @initialized = false
     @pages = []
 
@@ -16,11 +17,18 @@ window.Stage = class Stage
       for page in @pages
         page.setBgDimensions()
 
+    # $(document).bind 'scroll', (event) ->
+    #   clearTimeout(self.t)
+
+    #   self.t = setTimeout ->
+    #     self.scrollToCurrentPage()
+    #   , 150
+
     $(document.body).bind 'mouseover', ->
       $(document.body).addClass 'grab'
 
     $(document.body).bind 'mouseleave', ->
-      $(document.body).trigger('mouseup')
+      $(document.body).trigger 'mouseup'
       $(document.body).removeClass 'grab', 'grabbing'
 
     $(document.body).bind 'mousedown', (event) ->
@@ -36,7 +44,7 @@ window.Stage = class Stage
       $(document.body).addClass 'grab'
       $(document.body).removeClass 'grabbing'
 
-      $(document.body).scrollTo(self.currentPage.target, 250)
+      self.scrollToCurrentPage()
 
     $(document.body).bind 'mousemove', (event) ->
       self.gesturesY = parseInt(event.pageY, 10)
@@ -48,3 +56,5 @@ window.Stage = class Stage
     @height = $(window).height()
     @width = $(window).width()
 
+  scrollToCurrentPage: ->
+    $('body').scrollTo(@currentPage.target, 250)
