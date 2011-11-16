@@ -4,7 +4,7 @@ window.Stage = class Stage
     @currentPage
     @grabbing = false
     @gesturesY = 0
-    @startPosition = 0
+    @scrollStartPosition = 0
     @initialized = false
     @pages = []
 
@@ -16,41 +16,33 @@ window.Stage = class Stage
       for page in @pages
         page.setBgDimensions()
 
-    $('body').bind 'scroll', ->
-      console.log 'scrolling'
+    $(document.body).bind 'mouseover', ->
+      $(document.body).addClass 'grab'
 
-    $('body').bind 'mouseover', ->
-      $('body').addClass 'grab'
+    $(document.body).bind 'mouseleave', ->
+      $(document.body).trigger('mouseup')
+      $(document.body).removeClass 'grab', 'grabbing'
 
-    $('body').bind 'mouseleave', ->
-      $('body').removeClass 'grab', 'grabbing'
-
-    $('body').bind 'mousedown', (event) ->
-      event.preventDefault()
-      self.startPosition = self.gesturesY
+    $(document.body).bind 'mousedown', (event) ->
+      self.scrollStartPosition = self.gesturesY
       self.grabbing = true
 
-      $('body').removeClass 'grab'
-      $('body').addClass 'grabbing'
+      $(document.body).removeClass 'grab'
+      $(document.body).addClass 'grabbing'
 
-    $('body').bind 'mouseup', (event) ->
-      event.preventDefault()
+    $(document.body).bind 'mouseup', (event) ->
       self.grabbing = false
-      $('body').addClass 'grab'
-      $('body').removeClass 'grabbing'
 
-    $('body').bind 'mousemove', (event) ->
+      $(document.body).addClass 'grab'
+      $(document.body).removeClass 'grabbing'
+
+      $(document.body).scrollTo(self.currentPage.target, 250)
+
+    $(document.body).bind 'mousemove', (event) ->
       self.gesturesY = parseInt(event.pageY, 10)
 
       if self.grabbing
-        window.scrollBy(0, self.startPosition - self.gesturesY)
-
-        if event.pageY > self.startPosition + 50
-          $('body').scrollTo($(self.pages[self.currentPage.id - 1].target), 500)
-          event.stopPropagation()
-        else if event.pageY < self.startPosition - 50
-          $('body').scrollTo($(self.pages[self.currentPage.id + 1].target), 500)
-          event.stopPropagation()
+        window.scrollBy(0, self.scrollStartPosition - self.gesturesY)
 
   setStageDimensions: ->
     @height = $(window).height()

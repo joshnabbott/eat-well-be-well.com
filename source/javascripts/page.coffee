@@ -15,7 +15,6 @@ window.Page = class Page
         currentPage = self
 
       self.stage.currentPage = currentPage
-      $('body').scrollTo(currentPage.target, 350)
 
       $('ul > li > a').removeClass 'current'
       currentPage.showContent()
