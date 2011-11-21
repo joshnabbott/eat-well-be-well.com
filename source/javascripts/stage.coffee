@@ -24,6 +24,26 @@ window.Stage = class Stage
     #     self.scrollToCurrentPage()
     #   , 150
 
+    # document.addEventListener ('touchstart'), (e) ->
+    #   # e.preventDefault()
+    #   console.log "touch started"
+    #   self.grabbing = true
+
+    # document.addEventListener ('touchend'), (e) ->
+    #   # e.preventDefault()
+    #   console.log "touch stopped"
+    #   self.grabbing = false
+
+    # document.addEventListener ('touchmove'), (e) ->
+    #   console.log "touch move"
+    #   # e.preventDefault()
+    #   $(document.body).trigger 'mousemove'
+    #   # self.gesturesY = parseInt(event.pageY, 10)
+
+    #   if self.grabbing
+    #     window.scrollBy(0, self.scrollStartPosition - self.gesturesY)
+    #   # self.scrollToCurrentPage()
+
     $(document.body).bind 'mouseover', ->
       $(document.body).addClass 'grab'
 

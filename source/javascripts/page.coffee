@@ -22,8 +22,8 @@ window.Page = class Page
       currentPage.link.makeCurrent()
       currentPage.trackPageView()
     ),
-      offset: '75%'
-      onlyOnScrol: true
+      offset: '50%'
+      onlyOnScroll: true
 
   loadBackgroundImage: ->
     self = @
