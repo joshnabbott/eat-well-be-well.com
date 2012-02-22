@@ -1,6 +1,8 @@
 @import "compass";
 @import "compass/css3/font-face";
 @include font-face("Quicksand Light", font-files("/fonts/quicksand/Quicksand_Light.otf", opentype));
+/* @include font-face("Quicksand Bold", font-files("/fonts/quicksand/Quicksand_Bold.otf", opentype)); */
+@include font-face("Quicksand Book", font-files("/fonts/quicksand/Quicksand_Book.otf", opentype));
 
 $link-color:         red;
 $link-hover-color:   #cacaca;
@@ -9,8 +11,14 @@ $link-active-color:  false;
 $link-visited-color: false;
 
 $font-color:  #fff;
-$font-family: 'Quicksand Light';
-$base-font-size:   36px;
+$base-font-family: 'Quicksand Light';
+$bold-font-family: 'Quicksand Book';
+$huge-font-size: 200%;
+$large-font-size: 175%;
+$medium-font-size: 125%;
+$small-font-size: 90%;
+$smallest-font-size: 75%;
+$base-font-size: 36px;
 $base-line-height: 150%;
 
 @include global-reset;
@@ -26,7 +34,7 @@ html, body {
 }
 
 body {
-  font-family: $font-family;
+  font-family: $base-font-family;
   color: $font-color;
   font-size: $base-font-size;
 }
@@ -95,14 +103,38 @@ div.page {
     vertical-align: middle;
     width: 100%;
 
-    p {
+    .bold {
+      font-family: $bold-font-family;
+    }
+
+    .huge-text {
+      font-size: $huge-font-size;
+    }
+
+    .large-text {
+      font-size: $large-font-size;
+    }
+
+    .medium-text {
+      font-size: $medium-font-size;
+    }
+
+    .small-text {
+      font-size: $small-font-size;
+    }
+
+    .smallest-text {
+      font-size: $smallest-font-size;
+    }
+
+    p, ul li {
       margin: 0 auto 25px auto;
       width: 70%;
 
       span {
         background: rgba(0, 0, 0, 0.5);
         line-height: 200%;
-        padding: 10px 0;
+        padding: 10px 5px;
         text-shadow: 1px 2px #000;
       }
     }

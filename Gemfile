@@ -6,5 +6,7 @@ gem "sprockets"
 group :development do
   gem 'guard-coffeescript'
   gem 'json'
+  gem 'rb-fsevent'
+  gem 'growl_notify'
 end
 
