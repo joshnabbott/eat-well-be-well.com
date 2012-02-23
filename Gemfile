@@ -4,8 +4,10 @@ gem "middleman", "~>2.0.12"
 gem "sprockets"
 
 group :development do
+  gem 'ale'
   gem 'guard-coffeescript'
-  gem 'growl_notify'
   gem 'json'
+  gem 'rb-fsevent'
+  gem 'growl_notify'
 end
 
