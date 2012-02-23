@@ -4,6 +4,7 @@ gem "middleman", "~>2.0.12"
 gem "sprockets"
 
 group :development do
+  gem 'ale'
   gem 'guard-coffeescript'
   gem 'json'
   gem 'rb-fsevent'
