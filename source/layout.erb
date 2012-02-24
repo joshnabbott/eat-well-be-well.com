@@ -66,24 +66,27 @@
 
     <div class="page" id="page-seven" data-background-image="/images/background-images/tomato.jpg">
       <div class="content">
-        <form method="post" action="" id="contact-form" data-invisible>
+        <form method="post" action="http://teek:4bb0tt@formmailer.heroku.com" id="contact-form" data-invisible>
           <h3>Could one conversation change your life?</h3>
 
           <fieldset>
             <p data-invisible>
-              <label for="contact-name">Name:</label><input type="text" name="contact[name]" id="contact-name" />
+              <label for="contact-name">Name:</label><input type="text" name="message[name]" id="contact-name" />
             </p>
 
             <p data-invisible>
-              <label for="contact-email">Email:</label><input type="text" name="contact[email]" id="contact-email" />
+              <label for="contact-email">Email:</label><input type="text" name="message[from]" id="contact-email" />
             </p>
           </fieldset>
 
           <fieldset>
             <p data-invisible>
-              <label for="contact-message">Tell me about some of your eating goals.</label><textarea name="contact[message]" id="contact-message"></textarea>
+              <label for="contact-message">Tell me about some of your eating goals.</label><textarea name="message[body]" id="contact-message"></textarea>
             </p>
           </fieldset>
+          <input type="hidden" name="message[to]" value="joshnabbott@gmail.com" />
+          <input type="hidden" name="message[subject]" value="Contact from the website" />
+          <input type="hidden" name="redirect_to" value="http://localhost:4567" />
         </form>
       </div>
     </div>
