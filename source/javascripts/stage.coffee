@@ -2,10 +2,6 @@ window.Stage = class Stage
   constructor: ->
     self = @
     @currentPage
-    @grabbing = false
-    @gesturesY = 0
-    @scrollStartPosition = 0
-    @t
     @initialized = false
     @pages = []
 
@@ -21,5 +17,3 @@ window.Stage = class Stage
     @height = $(window).height()
     @width = $(window).width()
 
-  scrollToCurrentPage: ->
-    $('body').scrollTo(@currentPage.target, 250)
