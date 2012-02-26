@@ -28,6 +28,7 @@ window.ContactForm = class ContactForm
     self = @
     $.ajax @form.attr("action"),
       type: 'POST'
+      data: @form.serialize()
       beforeSend: (xhr) ->
         xhr.setRequestHeader "Authorization", "Basic dGVlazpjYXQ="
       error: (xhr, textStatus, errorThrown) ->

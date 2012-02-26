@@ -42,6 +42,7 @@
       self = this;
       return $.ajax(this.form.attr("action"), {
         type: 'POST',
+        data: this.form.serialize(),
         beforeSend: function(xhr) {
           return xhr.setRequestHeader("Authorization", "Basic dGVlazpjYXQ=");
         },
