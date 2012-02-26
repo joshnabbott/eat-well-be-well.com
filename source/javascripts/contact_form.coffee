@@ -13,6 +13,10 @@ window.ContactForm = class ContactForm
       self.errors = []
       self.send() if self.validateInputs()
 
+    $(".field_with_errors").live "blur", (event) ->
+      element = $(event.currentTarget)
+      element.removeClass("field_with_errors") if element.val()
+
   validateInputs: ->
     self = @
     @settings.requiredFields.each (index, field) ->

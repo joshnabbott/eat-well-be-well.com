@@ -17,6 +17,11 @@
         self.errors = [];
         if (self.validateInputs()) return self.send();
       });
+      $(".field_with_errors").live("blur", function(event) {
+        var element;
+        element = $(event.currentTarget);
+        if (element.val()) return element.removeClass("field_with_errors");
+      });
     }
 
     ContactForm.prototype.validateInputs = function() {
