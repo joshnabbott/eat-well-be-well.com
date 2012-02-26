@@ -21,3 +21,10 @@ $ ->
       , initialDelay / 2
   , initialDelay
 
+  # Pass in the form to observe
+  contactForm = new ContactForm($('#contact-form'), {
+    updateOnSuccess: $('#page-seven .content')
+    updateOnFailure: $('#contact-form')
+    requiredFields: $('#contact-name, #contact-email, #contact-message')
+  })
+

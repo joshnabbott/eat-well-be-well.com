@@ -5,5 +5,6 @@
 #= require "stage"
 #= require "page"
 #= require "nav_link"
+#= require "contact_form"
 #= require "application"
 

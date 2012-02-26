@@ -1,6 +1,7 @@
 (function() {
+
   $(function() {
-    var initialDelay;
+    var contactForm, initialDelay;
     initialDelay = 2000;
     window.stage = new Stage();
     $('.page').each(function(index, page) {
@@ -9,7 +10,7 @@
       window.stage.pages.push(new Page(index, $(page), $(link), window.stage));
       return $(page).find('.content').addClass('loading');
     });
-    return setTimeout(function() {
+    setTimeout(function() {
       var page, _i, _len, _ref, _results;
       _ref = window.stage.pages;
       _results = [];
@@ -24,5 +25,11 @@
       }
       return _results;
     }, initialDelay);
+    return contactForm = new ContactForm($('#contact-form'), {
+      updateOnSuccess: $('#page-seven .content'),
+      updateOnFailure: $('#contact-form'),
+      requiredFields: $('#contact-name, #contact-email, #contact-message')
+    });
   });
+
 }).call(this);
