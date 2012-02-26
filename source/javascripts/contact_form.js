@@ -52,11 +52,11 @@
           return xhr.setRequestHeader("Authorization", "Basic dGVlazpjYXQ=");
         },
         error: function(xhr, textStatus, errorThrown) {
-          return self.settings.updateOnFailure.prepend("There was a problem sending your message. Please try again.");
+          return self.settings.updateOnFailure.prepend($("#contact-form-error").html());
         },
         success: function(data, textStatus, jqXHR) {
           self.form.remove();
-          return self.settings.updateOnSuccess.html("<p><span>Thank you for getting in touch! I'm looking forward to understanding how I can help you reach your goals.</span></p>");
+          return self.settings.updateOnSuccess.html($("#contact-form-thank-you").html());
         }
       });
     };

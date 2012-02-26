@@ -36,9 +36,9 @@ window.ContactForm = class ContactForm
       beforeSend: (xhr) ->
         xhr.setRequestHeader "Authorization", "Basic dGVlazpjYXQ="
       error: (xhr, textStatus, errorThrown) ->
-        self.settings.updateOnFailure.prepend "There was a problem sending your message. Please try again."
+        self.settings.updateOnFailure.prepend $("#contact-form-error").html()
 
       success: (data, textStatus, jqXHR) ->
         self.form.remove()
-        self.settings.updateOnSuccess.html "<p><span>Thank you for getting in touch! I'm looking forward to understanding how I can help you reach your goals.</span></p>"
+        self.settings.updateOnSuccess.html $("#contact-form-thank-you").html()
 
