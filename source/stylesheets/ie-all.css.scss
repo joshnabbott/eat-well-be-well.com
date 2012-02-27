@@ -1,0 +1,12 @@
+ul {
+  li {
+    a {
+      background: url('/images/css/bg-navigation.png') 0 0 no-repeat;
+    }
+
+    a.current {
+      background: url('/images/css/bg-navigation-active.png') 0 0 no-repeat;
+    }
+  }
+}
+

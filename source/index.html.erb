@@ -12,6 +12,9 @@
 
     <%= stylesheet_link_tag "site.css" %>
     <%= yield_content :stylesheets %>
+    <!--[if IE]>
+      <%= stylesheet_link_tag "ie-all.css" %>
+    <![endif]-->
     <%= javascript_include_tag 'modernizr.custom' %>
     <%= yield_content :javascripts %>
     <%= yield_content :head %>

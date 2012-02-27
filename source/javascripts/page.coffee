@@ -38,7 +38,9 @@ window.Page = class Page
 
   next: -> @stage.pages[@id + 1]
 
-  trackPageView: -> console.log "Analytics tracking goes here"
+  trackPageView: ->
+    # console.log "Analytics tracking goes here"
+    return false
 
   setElementVisibility: ->
     @target.find('[data-invisible]').each ->

@@ -1,6 +1,8 @@
 (function() {
   var Page;
+
   window.Page = Page = (function() {
+
     function Page(id, target, link, stage) {
       this.id = id;
       this.target = target;
@@ -8,6 +10,7 @@
       this.link = new NavLink(this, link);
       this.initialize();
     }
+
     Page.prototype.initialize = function() {
       var self;
       self = this;
@@ -26,9 +29,10 @@
         return currentPage.trackPageView();
       }), {
         offset: '50%',
-        onlyOnScrol: true
+        onlyOnScroll: true
       });
     };
+
     Page.prototype.loadBackgroundImage = function() {
       var $image, self;
       self = this;
@@ -37,26 +41,32 @@
       this.target.prepend($image);
       return $image.fadeIn('slow');
     };
+
     Page.prototype.setBgDimensions = function() {
       return $('.background-image > img').css({
         'height': this.stage.height,
         'width': this.stage.width
       });
     };
+
     Page.prototype.prev = function() {
       return this.stage.pages[this.id - 1];
     };
+
     Page.prototype.next = function() {
       return this.stage.pages[this.id + 1];
     };
+
     Page.prototype.trackPageView = function() {
-      return console.log("Analytics tracking goes here");
+      return false;
     };
+
     Page.prototype.setElementVisibility = function() {
       return this.target.find('[data-invisible]').each(function() {
         return $(this).addClass('invisible');
       });
     };
+
     Page.prototype.showContent = function() {
       if (this.stage.initialized) {
         return this.target.find('.invisible').each(function(index, element) {
@@ -67,6 +77,7 @@
         });
       }
     };
+
     Page.prototype.hideContent = function() {
       return this.target.find('.invisible').each(function(index, element) {
         return setTimeout(function() {
@@ -75,6 +86,9 @@
         }, 250 * index);
       });
     };
+
     return Page;
+
   })();
+
 }).call(this);
