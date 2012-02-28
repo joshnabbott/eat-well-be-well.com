@@ -6,8 +6,8 @@
     nonHumanWord = nonHumanWord.replace(/\W\w/g, function(match) {
       return ' ' + match[1].toUpperCase();
     });
-    humanWord = nonHumanWord.replace(/([a-z])/, function($1) {
-      return $1.toUpperCase();
+    humanWord = nonHumanWord.replace(/^\w/, function(eff) {
+      return eff.toUpperCase();
     });
     return humanWord;
   };
