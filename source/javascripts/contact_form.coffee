@@ -17,6 +17,12 @@ window.ContactForm = class ContactForm
       element = $(event.currentTarget)
       element.removeClass("field_with_errors") if element.val()
 
+  disableSubmit: ->
+    @form.find(':submit').attr("disabled", "disabled")
+
+  enableSubmit: ->
+    @form.find(':submit').attr("disabled", "")
+
   validateInputs: ->
     self = @
     @settings.requiredFields.each (index, field) ->
@@ -30,12 +36,15 @@ window.ContactForm = class ContactForm
 
   send: ->
     self = @
+    self.disableSubmit()
+
     $.ajax @form.attr("action"),
       type: 'POST'
       data: @form.serialize()
       beforeSend: (xhr) ->
         xhr.setRequestHeader "Authorization", "Basic dGVlazpjYXQ="
       error: (xhr, textStatus, errorThrown) ->
+        self.enableSubmit()
         self.settings.updateOnFailure.prepend $("#contact-form-error").html()
 
       success: (data, textStatus, jqXHR) ->

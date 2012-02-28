@@ -24,6 +24,14 @@
       });
     }
 
+    ContactForm.prototype.disableSubmit = function() {
+      return this.form.find(':submit').attr("disabled", "disabled");
+    };
+
+    ContactForm.prototype.enableSubmit = function() {
+      return this.form.find(':submit').attr("disabled", "");
+    };
+
     ContactForm.prototype.validateInputs = function() {
       var self;
       self = this;
@@ -45,6 +53,7 @@
     ContactForm.prototype.send = function() {
       var self;
       self = this;
+      self.disableSubmit();
       return $.ajax(this.form.attr("action"), {
         type: 'POST',
         data: this.form.serialize(),
@@ -52,6 +61,7 @@
           return xhr.setRequestHeader("Authorization", "Basic dGVlazpjYXQ=");
         },
         error: function(xhr, textStatus, errorThrown) {
+          self.enableSubmit();
           return self.settings.updateOnFailure.prepend($("#contact-form-error").html());
         },
         success: function(data, textStatus, jqXHR) {
