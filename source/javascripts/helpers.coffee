@@ -1,20 +1,11 @@
 String::humanize = ->
   nonHumanWord = @
 
-  # Create an array by splitting at any illegal characters
-  humanWord = nonHumanWord.split /[^a-zA-Z]/
+  nonHumanWord = nonHumanWord.replace /\W\w/g, (match) ->
+    ' ' + match[1].toUpperCase()
 
-  # Check for empty elements in the array
-  humanWord = humanWord.filter (element) ->
-    element != ''
-
-  # Uppercase the first letter of each word
-  humanWord = humanWord.map (word) ->
-    return word.replace /([a-zA-Z])/, ($1) ->
-      $1.toUpperCase()
-
-  # Join the words with a space between them
-  humanWord = humanWord.join ' '
+  humanWord = nonHumanWord.replace /([a-z])/, ($1) ->
+    $1.toUpperCase()
 
   humanWord
 

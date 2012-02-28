@@ -10,3 +10,19 @@ ul {
   }
 }
 
+div.page {
+  .content {
+    p, ul li {
+      span {
+        background: transparent url('/images/css/bg-text.png');
+      }
+    }
+  }
+}
+
+#page-seven {
+  form {
+    background: transparent url('/images/css/bg-text.png');
+  }
+}
+

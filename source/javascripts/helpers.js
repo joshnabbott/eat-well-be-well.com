@@ -1,17 +1,15 @@
 (function() {
+
   String.prototype.humanize = function() {
     var humanWord, nonHumanWord;
     nonHumanWord = this;
-    humanWord = nonHumanWord.split(/[^a-zA-Z]/);
-    humanWord = humanWord.filter(function(element) {
-      return element !== '';
+    nonHumanWord = nonHumanWord.replace(/\W\w/g, function(match) {
+      return ' ' + match[1].toUpperCase();
     });
-    humanWord = humanWord.map(function(word) {
-      return word.replace(/([a-zA-Z])/, function($1) {
-        return $1.toUpperCase();
-      });
+    humanWord = nonHumanWord.replace(/([a-z])/, function($1) {
+      return $1.toUpperCase();
     });
-    humanWord = humanWord.join(' ');
     return humanWord;
   };
+
 }).call(this);
