@@ -62,9 +62,7 @@
     };
 
     Page.prototype.setElementVisibility = function() {
-      return this.target.find('[data-invisible]').each(function() {
-        return $(this).addClass('invisible');
-      });
+      return this.target.find('[data-invisible]').addClass('invisible');
     };
 
     Page.prototype.showContent = function() {

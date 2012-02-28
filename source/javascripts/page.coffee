@@ -43,8 +43,7 @@ window.Page = class Page
     return false
 
   setElementVisibility: ->
-    @target.find('[data-invisible]').each ->
-      $(this).addClass 'invisible'
+    @target.find('[data-invisible]').addClass 'invisible'
 
   showContent: ->
     if @stage.initialized
