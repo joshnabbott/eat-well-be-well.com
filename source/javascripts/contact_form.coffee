@@ -50,4 +50,5 @@ window.ContactForm = class ContactForm
       success: (data, textStatus, jqXHR) ->
         self.form.remove()
         self.settings.updateOnSuccess.html $("#contact-form-thank-you").html()
+        document.location.hash = '/thank-you'
 
