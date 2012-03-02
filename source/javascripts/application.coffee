@@ -1,6 +1,9 @@
 $ ->
   initialDelay = 2000 # milliseconds to wait before fading in background images
 
+  # Wrap Google Analytics with our own little object
+  window.analytics = new Analytics(_gaq)
+
   window.stage = new Stage()
 
   $('.page').each (index, page) ->

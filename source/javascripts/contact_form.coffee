@@ -38,9 +38,11 @@ window.ContactForm = class ContactForm
     self = @
     self.disableSubmit()
 
+    data = @form.serialize()
+
     $.ajax @form.attr("action"),
       type: 'POST'
-      data: @form.serialize()
+      data: data
       beforeSend: (xhr) ->
         xhr.setRequestHeader "Authorization", "Basic dGVlazpjYXQ="
       error: (xhr, textStatus, errorThrown) ->
@@ -50,5 +52,5 @@ window.ContactForm = class ContactForm
       success: (data, textStatus, jqXHR) ->
         self.form.remove()
         self.settings.updateOnSuccess.html $("#contact-form-thank-you").html()
-        document.location.hash = '/thank-you'
+        window.analytics.trackEvent('Contact Form', 'Submitted', 'Data', data)
 

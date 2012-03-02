@@ -2,6 +2,7 @@
 #= require "waypoints.min"
 #= require "jquery.scrollto.min"
 #= require "helpers"
+#= require "analytics"
 #= require "stage"
 #= require "page"
 #= require "nav_link"

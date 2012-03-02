@@ -3,6 +3,7 @@
   $(function() {
     var contactForm, initialDelay;
     initialDelay = 2000;
+    window.analytics = new Analytics(_gaq);
     window.stage = new Stage();
     $('.page').each(function(index, page) {
       var link;

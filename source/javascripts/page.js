@@ -58,7 +58,7 @@
     };
 
     Page.prototype.trackPageView = function() {
-      return false;
+      return window.analytics.trackPageView();
     };
 
     Page.prototype.setElementVisibility = function() {
