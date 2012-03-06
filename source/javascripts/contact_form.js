@@ -68,7 +68,7 @@
         success: function(data, textStatus, jqXHR) {
           self.form.remove();
           self.settings.updateOnSuccess.html($("#contact-form-thank-you").html());
-          return window.analytics.trackEvent('Contact Form', 'Submitted', 'Data', data);
+          return window.analytics.trackEvent('Contact Form', 'Submitted');
         }
       });
     };

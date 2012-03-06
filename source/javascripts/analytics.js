@@ -16,12 +16,10 @@
     };
 
     Analytics.prototype.trackPageView = function() {
-      console.log("Tracking page view.");
       return this.track('_trackPageView');
     };
 
     Analytics.prototype.trackEvent = function(category, action, label, value) {
-      console.log("Tracking '" + category + ": " + action + "'");
       return this.track('_trackEvent', category, action, label, value);
     };
 

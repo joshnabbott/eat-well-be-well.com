@@ -6,10 +6,8 @@ window.Analytics = class Analytics
     @queue.push args
 
   trackPageView: ->
-    console.log "Tracking page view."
     @track '_trackPageView'
 
   trackEvent: (category, action, label, value) ->
-    console.log "Tracking '#{category}: #{action}'"
     @track '_trackEvent', category, action, label, value
 
