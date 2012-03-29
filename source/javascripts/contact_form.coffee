@@ -44,7 +44,7 @@ window.ContactForm = class ContactForm
       type: 'POST'
       data: data
       beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Basic dGVlazpjYXQ="
+        xhr.setRequestHeader "Authorization", "Basic ZWZiMTNkY2RmYmY5MDk4ZGVlM2EzMGZhNTQ3YzQ3ZmU2NWI2ZDNkYTp4"
       error: (xhr, textStatus, errorThrown) ->
         self.enableSubmit()
         self.settings.updateOnFailure.prepend $("#contact-form-error").html()
