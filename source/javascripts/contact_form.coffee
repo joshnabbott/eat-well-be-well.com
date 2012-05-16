@@ -43,8 +43,6 @@ window.ContactForm = class ContactForm
     $.ajax @form.attr("action"),
       type: 'POST'
       data: data
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Basic NjY2OnNpcml1cw=="
       error: (xhr, textStatus, errorThrown) ->
         self.enableSubmit()
         self.settings.updateOnFailure.prepend $("#contact-form-error").html()
